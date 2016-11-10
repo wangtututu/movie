@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="css/index.css" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		
+	</head>
+	<body>
+		<div class="searchBox">
+			<form action="">
+				<input type="text" placeholder="电影、影人、影院、电视剧" />
+			</form>
+			<button class="back">取消</button>
+		</div>
+		<div class="searchMark"></div>
+		<div class="root">
+			<div class="nav">
+				<header>
+					<h2><img src="https://img3.doubanio.com/pics/cardkit/logo.png" alt="" /></h2>
+					<span class="login_btn">登录</span><span class="register_btn">注册</span>
+					<script>
+						$('.login_btn').on('click',function(){
+							window.location.href = 'login.html';
+						})
+						$('.register_btn').on('click',function(){
+							window.location.href = 'regester.html'
+						})
+					</script>
+				</header>
+				<main style="height: 669px;">
+					<div class="main-wrap">
+						<div class="navSearch">
+							<form action="">
+								<input style="z-index: 9;" type="text" placeholder="电影、影人、影院、电视剧" />
+							</form>
+						</div>
+						<h6>电影</h6>
+						<ul>
+							<li><a href="index.html">电影首页</a></li>
+							<li><a href="">影讯&购票</a></li>
+							<li><a href="">电视剧</a></li>
+							<li><a href="">排行榜</a></li>
+							<li><a href="">分类</a></li>
+							<li><a href="">影评</a></li>
+							<li><a href="">预告片</a></li>
+							<li><a href="">问答</a></li>
+						</ul>
+						<ul class="more">
+							<li><a href="">切换至桌面风格</a></li>
+							<li><a href="">使用反馈</a></li>
+						</ul>
+						<footer></footer>
+					</div>
+					
+				</main>
+				
+			</div>
+			<div class="main">
+				<div class="mark"></div>
+				<header>
+					<h1>豆瓣电影</h1>
+					<span></span>
+				</header>
+				<main>
+					<div class="logo">
+						<a href="#"></a>
+					</div>
+					<div class="search">
+					
+							<div>
+								<input type="text" placeholder="输入要查询的影片" />
+								<button></button>
+							</div>
+			
+						
+					</div>
+				</main>
+				<div class="list">
+					<h6>电影票房排行榜</h6>
+					<p>2013.5.20--2013.5.26（单位：人民币）</p>
+					<ul>
+						<li>
+							<dl>
+								<dt>排名</dt>
+								<dd>影片名称</dd>
+								<dd>周末票房</dd>
+								<dd>累计票房</dd>
+							</dl>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+	<script>
+		
+		var nWidth = document.documentElement.clientWidth;
+			
+		var size = nWidth / 7.5;
+			
+		document.getElementsByTagName('html')[0].style.fontSize = size +'px';
+		
+		
+		
+	</script>
+	<script src="js/index.js"></script>
+</html>

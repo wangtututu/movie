@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/detail.css">
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_1476774337_5045724.css">
+	
+	<script src="js/require.js"></script>
+	<script src="js/config.js"></script>
+	<title></title>
+</head>
+<body>
+	<header id="detail_h">
+		<span class="top_left iconfont">&#xe601;</span>
+		<span class="top_title">豆瓣电影</span>
+		<span class="top_right iconfont">&#xe600;</span>
+	</header>
+	<section class="price">
+		<span>豆瓣售价<i>32</i>元起</span>
+		<button class="ticket_btn">购票</button>
+
+	</section>
+	<section class="main">
+		<!-- <section class="main_title">
+			<h1 style="padding-top:2rem;">没有该影片相关信息！</h1>
+			
+		</section> -->
+	</section>
+<!-- 	<section class="main_pic">
+		<a href="javascript:;" class="img_cover">
+			<img src="https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2380677316.jpg" alt="">
+		</a>
+	</section>
+	<section class="main_title">
+		<h1>湄公河行动</h1>
+		
+	</section>
+	<section class="main_tag">
+		<p>类别：<i>动作/贩毒</i></p>
+		<p>导演：<i>林超贤</i></p>
+		<p>演员：
+			<a href="javascript:;">张涵予</a>/
+			<a href="javascript:;">彭于晏</a>/
+			<a href="javascript:;">孙淳</a>/
+		</p>
+		<p>年份：<i>2016</i></p>
+		<p>区域：<i>中国</i></p>
+		<article>
+			剧情简介：<span>2011年10月5日，两艘中国商船在湄公河金三角水域遭遇袭击，13名中国船员全部遇难，泰国警方从船上搜出90万颗冰毒。消息传回国内，举国震惊。为了查明真相，云南缉毒总队长高刚（张涵予 饰）接受了特殊任务，率领一支骁勇善战的战斗小组进入泰国境内，与潜伏在泰国的情报员方新武（彭于晏 饰）碰头，二人联手深入金三角查案。经过调查，发现案件背后果然有着重重疑点，真正的凶手在嫁祸残害无辜中国船员后，不但逍遥法外，更意图利用毒品制造更大的阴谋……二人决定，不惜一切代价也要拿下真凶，打击毒品犯罪，为无辜国人讨回公道！</span>
+			<a href="javascript:;" class="more">更多>></a>
+			<a href="javascript:;" class="packUp"><<收起</a>
+			
+		</article>
+	</section> -->
+	<script>
+	require(['jquery','design'],function($,design){
+		
+		$.get('/api/movie',{
+			 //向服务器发送的数据
+			title : localStorage.getItem('title')
+		},function(result){
+			console.log(result);
+			var item = result.result;
+			var html = '';
+			if(!item){
+				html = '<section class="main_title"><h1 style="padding-top:2rem;">没有该影片相关信息！</h1></section>'
+				$('.main').html(html);
+			}else{
+				
+				//console.log(result.result.cover)
+
+					
+					//console.log(item.act_s[0].url)
+				html = '<section class="main_pic"><a href="javascript:;" class="img_cover"><img src="'+
+					item.cover
+					+'" alt=""></a></section><section class="main_title"><h1>'+
+					item.title
+					+'</h1></section><section class="main_tag"><p>类别：<i>'+
+					item.tag
+					+'</i></p><p>导演：<i>'+
+					item.dir
+					+'</i></p><p>演员：<a href="'+
+					item.act_s[0].url
+					+'">'+
+					item.act_s[0].name
+					+'</a>/<a href="'+
+					item.act_s[1].url
+					+'">'+
+					item.act_s[1].name
+					+'</a>/<a href="'+
+					item.act_s[2].url
+					+'">'+
+					item.act_s[2].name
+					+'</a>/</p><p>年份：<i>'+
+					item.year
+					+'</i></p><p>区域：<i>'+
+					item.area
+					+'</i></p><article>剧情简介：<span>'+
+					item.desc
+					+'</span><a href="javascript:;" class="more">更多>></a><a href="javascript:;"class="packUp"><<收起</a></article></section>'
+				
+				$('.main').html(html);
+				$('.more').on('click',function(){
+					$(this).siblings('span').css({'overflow':'visible','height':'auto'});
+					$(this).css('display','none')
+					$(this).siblings('a').css('display','block')
+				})
+				$('.packUp').on('click',function(){
+					$(this).css('display','none');
+					$(this).siblings('a').css('display','block')
+					$(this).siblings('span').css({'overflow':'hidden','height':'0.7rem'});
+				})
+			}
+			
+		},"json");
+	})
+	</script>
+</body>
+</html>

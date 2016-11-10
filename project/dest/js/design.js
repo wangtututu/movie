@@ -1,0 +1,1 @@
+define(["jquery"],function(e){function n(){var e=document.documentElement.clientWidth,n=e/750*100;document.getElementsByTagName("html")[0].style.fontSize=n+"px"}e(window).on("resize",n),n()});
